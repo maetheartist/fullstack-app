@@ -1,29 +1,26 @@
-import logo from "../src/images/devlogo.svg";
-import avi from "../src/images/pfp.png";
-import link from "../src/images/Vector";
-import publish from "../src/images/publish.png";
-
-export  const navItems =
-[
-    {
+import logo from "../src/images/VectorLogo.png";
+import avi from "../src/images/Vectoravi.png";
+import link from "../src/images/Vector.png";
+import publish from "../src/images/Vectoreye.png";
+export const navItems = [
+  {
     id: 1,
     text: "logo",
-    pic: logo
-},
-    {
+    pic: require("../src/images/VectorLogo.png"),
+  },
+  {
     id: 2,
     text: "link",
-    pic: link
-},
-    {
+    pic: require("../src/images/Vector.png"),
+  },
+  {
     id: 3,
-    text: "img",
-    pic: avi
-},
-    {
+    text: "avi",
+    pic: require("../src/images/Vector.png"),
+  },
+  {
     id: 4,
     text: "publish",
-    pic: publish
-},
-
-]
+    pic: require("../src/images/Vectoreye.png"),
+  },
+];

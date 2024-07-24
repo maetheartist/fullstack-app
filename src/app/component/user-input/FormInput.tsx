@@ -1,16 +1,20 @@
-import React from 'react'
+// components/form-input/FormInput.tsx (adjust path as needed)
+import  {FC, InputHTMLAttributes } from "react";
+// import "./form-input.scss";
 
-type Props = {}
-
-export default function FormInput({label,...otherProps}) {
-  return (
-    <div className="group">
-    <input className="form-input" {...otherProps} />
-    {label && (
-      <label>
-        {label}
-      </label>
-    )}
-  </div>
-  )
+interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string; 
 }
+
+const FormInput: FC<FormInputProps> = ({ label, ...otherProps }) => {
+  return (
+    <div className="">
+        <label>
+          {label}
+        </label>
+      <input className="form-input input" {...otherProps} />
+    </div>
+  );
+};
+
+export default FormInput;

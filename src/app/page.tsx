@@ -1,10 +1,15 @@
 // import Image from "next/image";
+"use client";
+import LinkPage from "./component/link-page/LinkPage";
 import Navbar from "./component/navbar/Navbar";
-
+import SignIn from "./component/sign-in/SignIn";
+import SignUp from "./component/sign-up/SignUp";
 export default function Home() {
   return (
     <main>
-      <Navbar />
+      <SignIn />
+      <SignUp/>
+      <LinkPage/>
     </main>
   );
 }
