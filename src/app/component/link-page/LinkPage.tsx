@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import FormInput from "../user-input/FormInput";
 import Header from "../header/Header";
 import Button from "../button/Button";
+import Navbar from "../navbar/Navbar";
 interface FormFields {
   email: string;
   platform: string;
@@ -92,6 +93,7 @@ export default function LinkPage() {
   };
   return (
     <div className="card">
+      <Navbar/>
       <Header>
         <strong>Customize your links</strong>
         <p>

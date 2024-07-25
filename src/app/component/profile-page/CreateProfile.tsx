@@ -8,6 +8,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage} from "../../../utils/firebase/firebase";
 import Button from '../button/Button';
 import icon from "../../../images/imgIcon.png"
+import Navbar from "../navbar/Navbar"
 
 
 export default function CreateProfile() {
@@ -56,6 +57,7 @@ export default function CreateProfile() {
   };
   return (
     <div className='card'>
+      <Navbar/>
         <Header>
             <strong>Profile Details</strong>
             <p>Add your details to create a personal touch to your profile</p>
