@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { db } from "../../../utils/firebase/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import FormInput from "../user-input/FormInput";
-import Header from "../header/Header";
-import Button from "../button/Button";
-import Navbar from "../navbar/Navbar";
+import FormInput from "../user-input/FormInput"
+import Header from "../header/Header"
+import Button from "../button/Button"
+import Navbar from "../navbar/Navbar"
 interface FormFields {
   email: string;
   platform: string;
@@ -14,29 +14,33 @@ interface FormFields {
   social: object;
 }
 const socialLinks = {
-  Github: 'https://www.github.com/',
-  LinkedIn: 'https://www.linkedin.com/in/',
-  Twitter: 'https://twitter.com/',
-  Dev: 'https://dev.to.com/',
-  YouTube:'https://youtube.com/',
-  Codewars: 'https://codewars.com/',
-  FreeCodeCamp:'https://freecodecamp.com/'
-  
+  Github: "https://www.github.com/",
+  LinkedIn: "https://www.linkedin.com/in/",
+  Twitter: "https://twitter.com/",
+  Dev: "https://dev.to.com/",
+  YouTube: "https://youtube.com/",
+  Codewars: "https://codewars.com/",
+  FreeCodeCamp: "https://freecodecamp.com/",
 };
 const defaultFormFields: FormFields = {
   email: "",
   platform: "Github",
   username: "",
-  social: socialLinks
-
+  social: socialLinks,
 };
 
-const createUserAuthWithEmailandPassword = async (email: string, platform: string) => {
+const createUserAuthWithEmailandPassword = async (
+  email: string,
+  platform: string
+) => {
   const auth = getAuth();
   return await createUserWithEmailAndPassword(auth, email, "password");
 };
 
-const createUserDocumentFromAuth = async (userAuth: any, additionalData: any ) => {
+const createUserDocumentFromAuth = async (
+  userAuth: any,
+  additionalData: any
+) => {
   if (!userAuth) return;
   const userDocRef = doc(db, "users", userAuth.uid);
   const userSnapshot = await getDoc(userDocRef);
@@ -53,12 +57,13 @@ const createUserDocumentFromAuth = async (userAuth: any, additionalData: any ) =
       console.log("Error creating user document", error.message);
     }
   }
-  return(userDocRef);
-   ;
+  return userDocRef;
 };
 export default function LinkPage() {
   const [formFields, setFormFields] = useState<FormFields>(defaultFormFields);
-  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
@@ -66,12 +71,16 @@ export default function LinkPage() {
     e.preventDefault();
     const { email, platform, username } = formFields;
     try {
-     
-      const { user } = await createUserAuthWithEmailandPassword(email, platform,); 
+      const { user } = await createUserAuthWithEmailandPassword(
+        email,
+        platform
+      );
       await createUserDocumentFromAuth(user, {
         email,
         platform,
-          socialLink: `${socialLinks[platform as keyof typeof socialLinks]}${username}`,
+        socialLink: `${
+          socialLinks[platform as keyof typeof socialLinks]
+        }${username}`,
       });
       console.log(user);
       resetFields(); // Reset form fields after successful submission
@@ -84,16 +93,13 @@ export default function LinkPage() {
     }
   };
   try {
-    
-  } catch (error: any) {
-    
-  }
+  } catch (error: any) {}
   const resetFields = () => {
     setFormFields(defaultFormFields);
   };
   return (
     <div className="card">
-      <Navbar/>
+      <Navbar />
       <Header>
         <strong>Customize your links</strong>
         <p>
@@ -112,24 +118,24 @@ export default function LinkPage() {
           onChange={handleChange}
           required
         />
-        
-        <div className="my-8" >
-        <label>Platform</label>
+
+        <div className="my-8">
+          <label>Platform</label>
           <div className="select-input">
-          <select
-            name="platform"
-            value={formFields.platform}
-            onChange={handleChange}
-            required
-          >
-            <option value="Github">Github</option>
-            <option value="LinkedIn">LinkedIn</option>
-            <option value="Twitter">Twitter</option>
-            <option value="Youtube"></option>
-            <option value="Dev.to"></option>
-            <option value="Codewars"></option>
-            <option value="FreeCodeCamp"></option>
-          </select>
+            <select
+              name="platform"
+              value={formFields.platform}
+              onChange={handleChange}
+              required
+            >
+              <option value="Github">Github</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Twitter">Twitter</option>
+              <option value="Youtube"></option>
+              <option value="Dev.to"></option>
+              <option value="Codewars"></option>
+              <option value="FreeCodeCamp"></option>
+            </select>
           </div>
         </div>
         <label>Username</label>

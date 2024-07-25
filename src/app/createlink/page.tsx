@@ -1,8 +1,6 @@
-import React from 'react'
-import LinkPage from '../component/link-page/LinkPage'
-
-
+import React from "react";
+import LinkPage from "../component/link-page/LinkPage";
 
 export default function page() {
-  return <LinkPage/>
+  return <LinkPage />;
 }

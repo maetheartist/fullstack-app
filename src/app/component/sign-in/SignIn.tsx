@@ -2,10 +2,13 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import Button from "../button/Button";
 import FormInput from "../user-input/FormInput";
-import { signInWithGooglePopup,signInUserWithEmailAndPassword } from "../../../utils/firebase/firebase";
+import {
+  signInWithGooglePopup,
+  signInUserWithEmailAndPassword,
+} from "../../../utils/firebase/firebase";
 import Header from "../header/Header";
 import Image from "next/image";
-import Logo from "../../../images/VectorLogo.png"
+import Logo from "../../../images/VectorLogo.png";
 
 interface FormFields {
   email: string;
@@ -23,7 +26,7 @@ const SignIn: React.FC = () => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
-  const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted:", formFields);
     try {
@@ -42,17 +45,16 @@ const SignIn: React.FC = () => {
           console.log(error);
       }
     }
-    
   };
- 
+
   return (
     <div className="card">
       <Image src={Logo} alt="logo" />
       <Header>
-      <strong className="text-2xl">Login</strong>
-      <p className="my-4" >Add your details below to get back into the App.</p>
+        <strong className="text-2xl">Login</strong>
+        <p className="my-4">Add your details below to get back into the App.</p>
       </Header>
-     <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>Email:</label>
         <FormInput
           type="email"
@@ -62,7 +64,7 @@ const SignIn: React.FC = () => {
           required
           className="py-2 my-3"
         />
-     
+
         <label>Password:</label>
         <FormInput
           type="password"
@@ -70,17 +72,17 @@ const SignIn: React.FC = () => {
           value={formFields.password}
           onChange={handleChange}
           required
-           className="py-2 my-3"
+          className="py-2 my-3"
         />
-       
-          <Button onClick={signInUserWithEmailAndPassword}>Sign In</Button>
-          {/* <Button buttonType="google" onClick={signInWithGoogle}>
+
+        <Button onClick={signInUserWithEmailAndPassword}>Sign In</Button>
+        {/* <Button buttonType="google" onClick={signInWithGoogle}>
           Google sign in
           </Button> */}
-          <Header>
+        <Header>
           <h2>Dont have an account?</h2>
           <a href="">Create Account</a>
-          </Header>
+        </Header>
       </form>
     </div>
   );

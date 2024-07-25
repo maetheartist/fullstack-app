@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import { db } from "../../../utils/firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
@@ -6,7 +6,7 @@ import Button from "../button/Button";
 
 interface UserData {
   email: string;
-  image: string; 
+  image: string;
   socialLinks: {
     Github?: string;
     LinkedIn?: string;
@@ -23,10 +23,9 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      
-      const userId = "userId"; 
+      const userId = "userId";
       const userDocRef = doc(db, "users", userId);
-      
+
       try {
         const userDocSnapshot = await getDoc(userDocRef);
         if (userDocSnapshot.exists()) {

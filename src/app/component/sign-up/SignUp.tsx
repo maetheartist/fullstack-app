@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, ChangeEvent, FormEvent } from "react";
 import Head from "next/head";
 import {
@@ -9,8 +9,7 @@ import FormInput from "../user-input/FormInput";
 import Button from "../button/Button";
 import Header from "../header/Header";
 import Image from "next/image";
-import Logo from "../../../images/VectorLogo.png"
-
+import Logo from "../../../images/VectorLogo.png";
 
 interface FormFields {
   displayName: string;
@@ -47,7 +46,10 @@ export default function SignUp() {
       return;
     }
     try {
-      const userCredential = await createUserAuthWithEmailandPassword(email, password);
+      const userCredential = await createUserAuthWithEmailandPassword(
+        email,
+        password
+      );
       if (!userCredential || !userCredential.user) {
         throw new Error("User authentication failed");
       }
@@ -64,7 +66,6 @@ export default function SignUp() {
       }
     }
   };
-  
 
   return (
     <div className="">
@@ -72,13 +73,12 @@ export default function SignUp() {
         <Head>
           <title>Sign Up</title>
         </Head>
-       <Image src={Logo} alt="logo"/>
+        <Image src={Logo} alt="logo" />
         <Header>
-        <strong className="text-2xl">Don't have an account?</strong>
-        <p className="my-4">Let's get you started sharing your link.</p>
-        
+          <strong className="text-2xl">Don't have an account?</strong>
+          <p className="my-4">Let's get you started sharing your link.</p>
         </Header>
-       <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <FormInput
             label="Display Name"
             type="text"
@@ -119,16 +119,16 @@ export default function SignUp() {
             placeholder="Confirm password"
             className="py-2 my-3"
           />
-     
+
           <p className="text-sm text-gray-500">
             Passwords must contain at least 8 characters.
           </p>
           <Button type="submit">Sign Up</Button>
         </form>
-       <Header>
-       <h2>Already have an Account?</h2>
-        <a href="https://google.com">Log In</a>
-       </Header>
+        <Header>
+          <h2>Already have an Account?</h2>
+          <a href="https://google.com">Log In</a>
+        </Header>
       </div>
     </div>
   );
