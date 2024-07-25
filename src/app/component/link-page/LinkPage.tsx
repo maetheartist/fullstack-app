@@ -1,3 +1,4 @@
+"use client"
 import { useState, ChangeEvent, FormEvent } from "react";
 import { db } from "../../../utils/firebase/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -64,13 +65,12 @@ export default function LinkPage() {
     e.preventDefault();
     const { email, platform, username } = formFields;
     try {
-      // Example: Creating user authentication with email and password
-      const { user } = await createUserAuthWithEmailandPassword(email, platform,); // Replace with actual password logic
-      // Example: Creating user document in Firestore
+     
+      const { user } = await createUserAuthWithEmailandPassword(email, platform,); 
       await createUserDocumentFromAuth(user, {
         email,
         platform,
-        socialLink: `${socialLinks[platform]}${username}`,
+          socialLink: `${socialLinks[platform as keyof typeof socialLinks]}${username}`,
       });
       console.log(user);
       resetFields(); // Reset form fields after successful submission

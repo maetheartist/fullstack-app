@@ -70,7 +70,7 @@ export default function CreateProfile() {
             type="file"
             onChange={handleFileChange}
             />
-            <span onClick={handleFileChange}><Image src={icon} alt="img" /></span>
+            {/* <span onClick={handleFileChange}><Image src={icon} alt="img" /></span> */}
             </div>
             <span>Image must be below 1024x1024px. Use PNG or JPG format.</span>
         </div>

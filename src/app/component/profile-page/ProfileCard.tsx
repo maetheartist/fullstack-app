@@ -22,8 +22,8 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      // Replace 'userId' with the actual user ID or use authentication to get the current user's ID
-      const userId = "userId"; // Replace with actual user ID
+      
+      const userId = "userId"; 
       const userDocRef = doc(db, "users", userId);
       
       try {

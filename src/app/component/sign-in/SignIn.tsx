@@ -4,7 +4,9 @@ import Button from "../button/Button";
 import FormInput from "../user-input/FormInput";
 import { signInWithGooglePopup,signInUserWithEmailAndPassword } from "../../../utils/firebase/firebase";
 import Header from "../header/Header";
-import Navbar from "../navbar/Navbar";
+import Image from "next/image";
+import Logo from "../../../images/VectorLogo.png"
+
 interface FormFields {
   email: string;
   password: string;
@@ -40,17 +42,12 @@ const SignIn: React.FC = () => {
           console.log(error);
       }
     }
-    // Add your sign-in logic here
-  };
-  // const signInWithGoogle = async () => {
-  //   const  response  = await signInWithGooglePopup();
-  //   console.log(response);
     
-  //   // await createUserDocumentFromAuth(user);
-  // };
+  };
+ 
   return (
     <div className="card">
-      <Navbar/>
+      <Image src={Logo} alt="logo" />
       <Header>
       <strong className="text-2xl">Login</strong>
       <p className="my-4" >Add your details below to get back into the App.</p>

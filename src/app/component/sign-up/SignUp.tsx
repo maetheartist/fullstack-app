@@ -1,5 +1,5 @@
-// Use `import` statements without the `use client`; comment
-import React, { useState, ChangeEvent, FormEvent } from "react";
+"use client"
+import { useState, ChangeEvent, FormEvent } from "react";
 import Head from "next/head";
 import {
   createUserDocumentFromAuth,
@@ -8,7 +8,9 @@ import {
 import FormInput from "../user-input/FormInput";
 import Button from "../button/Button";
 import Header from "../header/Header";
-import Navbar from "../navbar/Navbar";
+import Image from "next/image";
+import Logo from "../../../images/VectorLogo.png"
+
 
 interface FormFields {
   displayName: string;
@@ -45,10 +47,11 @@ export default function SignUp() {
       return;
     }
     try {
-      const { user } = await createUserAuthWithEmailandPassword(
-        email,
-        password
-      );
+      const userCredential = await createUserAuthWithEmailandPassword(email, password);
+      if (!userCredential || !userCredential.user) {
+        throw new Error("User authentication failed");
+      }
+      const { user } = userCredential;
       await createUserDocumentFromAuth(user, {
         displayName: formFields.displayName,
       });
@@ -57,10 +60,11 @@ export default function SignUp() {
       if (error.code === "auth/email-already-in-use") {
         alert("Cannot create user, email already in use");
       } else {
-        console.error("User creation encountered an error");
+        console.error("User creation encountered an error", error);
       }
     }
   };
+  
 
   return (
     <div className="">
@@ -68,7 +72,7 @@ export default function SignUp() {
         <Head>
           <title>Sign Up</title>
         </Head>
-        <Navbar/>
+       <Image src={Logo} alt="logo"/>
         <Header>
         <strong className="text-2xl">Don't have an account?</strong>
         <p className="my-4">Let's get you started sharing your link.</p>

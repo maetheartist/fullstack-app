@@ -1,5 +1,4 @@
 // import Image from "next/image";
-"use client";
 import LinkPage from "./component/link-page/LinkPage";
 import Navbar from "./component/navbar/Navbar";
 import SignIn from "./component/sign-in/SignIn";
@@ -10,6 +9,7 @@ export default function Home() {
       <SignIn />
       <SignUp/>
       <LinkPage/>
+
     </main>
   );
 }
