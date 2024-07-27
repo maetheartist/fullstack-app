@@ -63,7 +63,7 @@ body {
   flex-grow: 0;
   margin: 10px 0px;
   background-color: white;
-  border: 1px solid
+  border: 1px solid;
 }
 
 &:hover {
@@ -78,7 +78,7 @@ body {
   width: 375px;
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba((0), 0, 0, 0.8);
-  margin: 20px 0px;
+  margin: 20px auto;
   padding: 40px 20px;
   border-radius: 5px;
 }
@@ -128,15 +128,14 @@ input {
 a {
   color: #633cff;
 }
-.profile-img{
-width: 193px;
-height: 193px;
-background: #EFEBFF;
-border-radius: 12px;
-flex: none;
-order: 1;
-flex-grow: 0;
-
+.profile-img {
+  width: 193px;
+  height: 193px;
+  background: #efebff;
+  border-radius: 12px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
 @layer utilities {
   .text-balance {
