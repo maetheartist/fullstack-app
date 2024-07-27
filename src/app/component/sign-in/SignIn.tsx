@@ -2,10 +2,9 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import Button from "../button/Button";
 import FormInput from "../user-input/FormInput";
-import {
-  signInWithGooglePopup,
-  signInUserWithEmailAndPassword,
-} from "../../../utils/firebase/firebase";
+import Link from "next/link";
+
+import { signInUserWithEmailAndPassword } from "../../../utils/firebase/firebase";
 import Header from "../header/Header";
 import Image from "next/image";
 import Logo from "../../../images/VectorLogo.png";
@@ -76,13 +75,11 @@ const SignIn: React.FC = () => {
         />
 
         <Button onClick={signInUserWithEmailAndPassword}>Sign In</Button>
-        {/* <Button buttonType="google" onClick={signInWithGoogle}>
-          Google sign in
-          </Button> */}
-        <Header>
+
+        <>
           <h2>Dont have an account?</h2>
-          <a href="">Create Account</a>
-        </Header>
+          <Link href="/signup"> Create Account</Link>
+        </>
       </form>
     </div>
   );

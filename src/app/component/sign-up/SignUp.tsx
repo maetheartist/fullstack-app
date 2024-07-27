@@ -7,9 +7,10 @@ import {
 } from "../../../utils/firebase/firebase";
 import FormInput from "../user-input/FormInput";
 import Button from "../button/Button";
-import Header from "../header/Header";
+
 import Image from "next/image";
 import Logo from "../../../images/VectorLogo.png";
+import Link from "next/link"
 
 interface FormFields {
   displayName: string;
@@ -74,10 +75,11 @@ export default function SignUp() {
           <title>Sign Up</title>
         </Head>
         <Image src={Logo} alt="logo" />
-        <Header>
-          <strong className="text-2xl">Don't have an account?</strong>
-          <p className="my-4">Let's get you started sharing your link.</p>
-        </Header>
+        {/* eslint-disable-next-line react/no-unescaped-entities */}
+        <>
+          <strong className="text-2xl">Don&apos;t have an account?</strong>
+          <p className="my-4">Let&apos;s get you started sharing your link.</p>
+        </>
         <form onSubmit={handleSubmit}>
           <FormInput
             label="Display Name"
@@ -125,10 +127,10 @@ export default function SignUp() {
           </p>
           <Button type="submit">Sign Up</Button>
         </form>
-        <Header>
+        <>
           <h2>Already have an Account?</h2>
-          <a href="https://google.com">Log In</a>
-        </Header>
+          <Link href="/signin">Log In</Link>
+        </>
       </div>
     </div>
   );
